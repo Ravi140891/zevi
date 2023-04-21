@@ -1,0 +1,15 @@
+.trends-card {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+
+  img {
+    width: 100%;
+    object-fit: fill;
+  }
+  p {
+    color: gray;
+  }
+}
