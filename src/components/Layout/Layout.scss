@@ -1,0 +1,18 @@
+.layout {
+  width: 100%;
+  height: 100vh;
+  color: white;
+  background: url("https://www.thespruce.com/thmb/VTgMbNWv4tNDjGP8e1JRlZe0OHY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/storing-your-clothes-without-a-closet-2648456-001-cfe0a333273b4b66a56ce1e65e7a9643.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
+  padding: 4rem;
+
+  .logo {
+    color: green;
+    letter-spacing: 6px;
+    float: right;
+    font-family: sans-serif;
+  }
+}
