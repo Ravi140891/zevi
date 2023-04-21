@@ -8,11 +8,15 @@
   background-size: cover;
   overflow: hidden;
   padding: 4rem;
+  display: flex;
+  justify-content: center;
 
   .logo {
+    position: fixed;
+    right: 4rem;
     color: green;
     letter-spacing: 6px;
-    float: right;
     font-family: sans-serif;
+    margin-bottom: 2rem;
   }
 }
