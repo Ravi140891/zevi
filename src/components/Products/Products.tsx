@@ -35,6 +35,7 @@ const Products: React.FC<Props> = ({
         <button onClick={() => handleWishlistClick(index)}>
           <i className="fa fa-heart" style={{fontSize:"40px",color:wishlist ? 'red' : 'white'}}></i>
         </button> 
+        <div className="view-product"><p>View Product</p></div>
       </div>
       <h5>{brand}</h5>
       <h6>{name}</h6>
@@ -54,7 +55,7 @@ const Products: React.FC<Props> = ({
           <i key={index} className='fa fa-star'
           style={{ color: 'lightgrey'}}
           ></i>
-        ))}
+        ))} <span>(210)</span>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import "./SearchResult.scss";
 import { faker } from "@faker-js/faker";
 import Products from "../Products/Products";
@@ -16,7 +16,7 @@ interface Product {
 const SearchResult = () => {
   const [brands] = useState<string[]>(["H&M", "Mango", "Zara", "Nike"]);
 
-  const generateProducts = () => {
+  const generateProducts = useCallback(() => {
     const newProducts: Product[] = [];
     for (let i = 0; i < 20; i++) {
       const productName = `${faker.commerce.productAdjective()} ${faker.commerce.product()}`;
@@ -38,7 +38,7 @@ const SearchResult = () => {
       newProducts.push(newProduct);
     }
     localStorage.setItem("products", JSON.stringify(newProducts));
-  };
+  }, [brands]);
 
   useEffect(() => {
     if (localStorage.getItem("products")) {
@@ -46,7 +46,7 @@ const SearchResult = () => {
     } else {
       generateProducts();
     }
-  }, []);
+  },[generateProducts]);
 
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -60,12 +60,6 @@ const SearchResult = () => {
   const memoizedProducts = useMemo(() => {
     return products;
   }, [products]);
-
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
-
-  console.log(memoizedProducts);
 
   return (
     <div className="search-result">
