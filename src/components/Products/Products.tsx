@@ -13,7 +13,7 @@ interface Props {
   index: number;
 }
 
-const Products: React.FC<Props> = ({
+const Products = ({
   name,
   image,
   price,
@@ -23,7 +23,7 @@ const Products: React.FC<Props> = ({
   discountedPrice,
   handleWishlistClick,
   index,
-}) => {
+}: Props) => {
   const maxRating = 5;
   const yellowStars = rating > 0 ? rating : 0;
   const emptyStars = maxRating - yellowStars;

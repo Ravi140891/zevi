@@ -1,0 +1,14 @@
+.container {
+  width: 80%;
+  border-bottom: 0.5px solid gray;
+  margin-bottom: 1rem;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      font-family: sans-serif;
+    }
+  }
+}

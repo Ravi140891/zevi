@@ -5,25 +5,29 @@
   align-items: center;
   position: relative;
 
-  input {
+  form {
     width: 90%;
-    padding: 1.2rem;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    font-size: 1.5rem;
-  }
 
-  .fa-search {
-    position: absolute;
-    right: 3rem;
-    top: 1rem;
-    color: gray;
-    z-index: 100;
-    font-size: 2rem;
+    input {
+      width: 90%;
+      padding: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1.5rem;
+    }
 
-    &:hover {
-      cursor: pointer;
+    .fa-search {
+      position: absolute;
+      right: 8rem;
+      top: 1rem;
+      color: gray;
+      z-index: 100;
+      font-size: 2rem;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

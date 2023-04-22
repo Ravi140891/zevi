@@ -11,15 +11,20 @@
       width: 100%;
     }
 
+    button {
+      cursor: pointer;
+    }
+
     .fa-heart {
       position: absolute;
       top: 1rem;
       right: 1.3rem;
+      cursor: pointer;
     }
 
     .view-product {
       position: absolute;
-      bottom: 0;
+      bottom: 1.2rem;
       width: 100%;
       height: 50px;
       background-color: cornflowerblue;
@@ -63,7 +68,7 @@
   &:hover {
     cursor: pointer;
     .view-product {
-      opacity: 100%;
+      opacity: 80%;
     }
   }
 }
