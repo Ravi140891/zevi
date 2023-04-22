@@ -3,9 +3,9 @@ import "./TrendsCard.scss";
 import { faker } from "@faker-js/faker";
 
 const TrendsCard = () => {
-  const productName:string = `${faker.commerce.productAdjective()} ${faker.commerce.product()}`;
+  const productName: string = faker.commerce.productName();
+  const imageUrl: string = `https://picsum.photos/300/300?random=${Math.random()}`;
 
-  const imageUrl:string = faker.image.imageUrl(300, 300, "fashion", true);
 
   return (
     <div className="trends-card">

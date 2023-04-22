@@ -1,0 +1,38 @@
+.products {
+  margin: 1rem 1.5rem;
+  display: inline-block;
+
+  .img {
+    display: inline-block;
+    position: relative;
+
+    .fa-heart {
+      position: absolute;
+      top: 1rem;
+      right: 1.3rem;
+    }
+  }
+
+  h5 {
+    font-size: 1.5rem;
+    font-family: sans-serif;
+  }
+
+  h6 {
+    font-size: 1.2rem;
+    font-family: sans-serif;
+  }
+  p {
+    .price {
+      font-size: 1.2rem;
+      color: gray;
+      text-decoration: line-through;
+    }
+
+    .discount {
+      font-size: 1.2rem;
+      color: cornflowerblue;
+      font-weight: bold;
+    }
+  }
+}

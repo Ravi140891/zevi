@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 import TrendsCard from "../TrendsCard/TrendsCard";
 
 const Modal = () => {
-  const popularSuggestions = Array.from({ length: 5 }, () =>
+  const popularSuggestions:string[] = Array.from({ length: 5 }, () =>
     faker.commerce.productName()
   );
   return (
