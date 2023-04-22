@@ -5,7 +5,7 @@ import SideBar from "../SideBar/SideBar";
 import { AppContext } from "../../App";
 
 const SearchResult = () => {
-  const { products, setProducts } = useContext(AppContext);
+  const { products, setProducts, filtered, noItemsFound } = useContext(AppContext);
 
   const handleWishlistClick = (index: number) => {
     const newProducts = [...products];
@@ -31,20 +31,37 @@ const SearchResult = () => {
       <section>
         <SideBar/>
         <div className="gallery">
-          {memoizedProducts.map((product, index) => (
-            <Products
-              key={index}
-              index={index}
-              name={product.name}
-              image={product.image}
-              price={product.price}
-              discountedPrice={product.discountedPrice}
-              rating={product.rating}
-              brand={product.brand}
-              wishlist={product.wishlist}
-              handleWishlistClick={() => handleWishlistClick(index)}
-            />
-          ))}
+          {noItemsFound
+            ? <p className="error">No items found</p>
+            : filtered && filtered.length > 0
+              ? filtered.map((product,index) => (
+                  <Products
+                    key={index}
+                    index={index}
+                    name={product.name}
+                    image={product.image}
+                    price={product.price}
+                    discountedPrice={product.discountedPrice}
+                    rating={product.rating}
+                    brand={product.brand}
+                    wishlist={product.wishlist}
+                    handleWishlistClick={() => handleWishlistClick(index)}
+                  />
+                ))
+              : memoizedProducts.map((product, index) => (
+                  <Products
+                    key={index}
+                    index={index}
+                    name={product.name}
+                    image={product.image}
+                    price={product.price}
+                    discountedPrice={product.discountedPrice}
+                    rating={product.rating}
+                    brand={product.brand}
+                    wishlist={product.wishlist}
+                    handleWishlistClick={() => handleWishlistClick(index)}
+                  />
+                ))}
         </div>
       </section>
     </div>

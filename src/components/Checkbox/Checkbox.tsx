@@ -1,19 +1,22 @@
-import React from 'react'
-import './Checkbox.scss'
+import React, { useContext } from 'react';
+import './Checkbox.scss';
+import { AppContext } from '../../App';
 
 interface CheckboxProps {
   label: string;
   name: string;
 }
 
+const Checkbox = ({ label, name }: CheckboxProps) => {
+  const { handleFilter } = useContext(AppContext);
 
-const Checkbox = ({label,name}: CheckboxProps) => {
+
   return (
     <div className="check">
-            <input type="checkbox" name={name} id={label}/>
-            <label htmlFor={label}>{name}</label>
-            </div>
-  )
-}
+      <input type="checkbox" name={name} id={label} onChange={(e) => handleFilter(e)} value={name}/>
+      <label htmlFor={label}>{name}</label>
+    </div>
+  );
+};
 
-export default Checkbox
+export default Checkbox;

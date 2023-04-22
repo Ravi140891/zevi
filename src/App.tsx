@@ -18,16 +18,97 @@ interface Product {
 interface AppContextType {
   products: Product[];
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  handleFilter: any;
+  selected: string[];
+  filtered: Product[];
+  noItemsFound: boolean;
 }
 
 export const AppContext = createContext<AppContextType>({
   products: [],
   setProducts: () => {},
+  handleFilter: () => {},
+  selected: [],
+  filtered: [],
+  noItemsFound: false,
 });
 
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [filtered, setFiltered] = useState<Product[]>([]);
+  const [noItemsFound, setNoItemsFound] = useState<boolean>(false);
+
+const [selected, setSelected] = useState<string[]>([]);
+
+ const handleFilter = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+
+    setSelected((prevSelected) => {
+      if (checked) {
+        return [...prevSelected, value];
+      } else {
+        return prevSelected.filter((item) => item !== value);
+      }
+    });
+  }, []);
+
+useEffect(() => {
+  const filteredByBrand = products.filter((product) => {
+    if (selected.length === 0) {
+      return true;
+    } else {
+      return selected.includes(product.brand);
+    }
+  });
+
+  const filtered =
+    filteredByBrand.length
+      ? filteredByBrand.filter((product) => {
+          if (
+            (selected.includes("Under 500") && product.price <= 500) ||
+            (selected.includes("1000 To 3000") &&
+              product.price >= 1000 &&
+              product.price <= 3000)
+          ) {
+            return true;
+          } else if (
+            !selected.includes("Under 500") &&
+            !selected.includes("1000 To 3000")
+          ) {
+            return true;
+          } else {
+            return false
+          }
+        })
+      : products.filter((product) => {
+          if (
+            (selected.includes("Under 500") && product.price <= 500) ||
+            (selected.includes("1000 To 3000") &&
+              product.price >= 1000 &&
+              product.price <= 3000)
+          ) {
+            return true;
+          } else if (
+            !selected.includes("Under 500") &&
+            !selected.includes("1000 To 3000")
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+  if (selected.length && filtered.length === 0) {
+    setNoItemsFound(true);
+  } else {
+    setNoItemsFound(false);
+  }
+  setFiltered(filtered);
+}, [selected, products]);
+
+console.log(noItemsFound)
+
 
   const generateProducts = useCallback(() => {
     const newProducts: Product[] = [];
@@ -64,7 +145,7 @@ function App() {
   }, [generateProducts]);
   return (
     <div className="App">
-      <AppContext.Provider value={{ products, setProducts }}>
+      <AppContext.Provider value={{ products, setProducts, handleFilter, selected, filtered, noItemsFound }}>
       <Routes>
         <Route path='/' element={<Layout/>}/>
         <Route path='/search-result' element={<SearchResult/>}/>

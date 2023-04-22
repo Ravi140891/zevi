@@ -51,6 +51,14 @@
       flex-wrap: wrap;
       justify-content: space-between;
       max-width: 80%;
+
+      .error {
+        text-align: center;
+        font-size: 2rem;
+        font-family: sans-serif;
+        font-weight: bold;
+        justify-content: center;
+      }
     }
   }
 }
