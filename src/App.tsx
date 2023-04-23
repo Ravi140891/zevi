@@ -107,7 +107,6 @@ useEffect(() => {
   setFiltered(filtered);
 }, [selected, products]);
 
-console.log(noItemsFound)
 
 
   const generateProducts = useCallback(() => {

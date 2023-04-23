@@ -41,7 +41,8 @@
     font-size: 2rem;
     font-weight: 300;
     font-family: sans-serif;
-    margin: 2rem 0;
+
+    margin: 1rem 0;
   }
 
   section {
@@ -51,6 +52,8 @@
       flex-wrap: wrap;
       justify-content: space-between;
       max-width: 80%;
+
+      justify-content: center;
 
       .error {
         text-align: center;
