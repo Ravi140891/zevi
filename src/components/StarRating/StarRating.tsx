@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './StarRating.scss'
+import { AppContext } from '../../App';
 
 interface Props {
   rating: number;
@@ -17,10 +18,10 @@ const StarRating = ({ rating }: Props) => {
       ></i>
     );
   }
-
+  const { handleFilter } = useContext(AppContext);
   return (
     <div className="wrapper">
-      <input type="checkbox" name={rating.toString()} id={rating.toString()} />
+      <input type="checkbox" name={rating.toString()} id={rating.toString()} onChange={(e) => handleFilter(e)} value={rating.toString()} />
       <label htmlFor={rating.toString()}>{stars}</label>
     </div>
   );

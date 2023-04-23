@@ -62,42 +62,31 @@ useEffect(() => {
     }
   });
 
-  const filtered =
-    filteredByBrand.length
-      ? filteredByBrand.filter((product) => {
-          if (
-            (selected.includes("Under 500") && product.price <= 500) ||
-            (selected.includes("1000 To 3000") &&
-              product.price >= 1000 &&
-              product.price <= 3000)
-          ) {
-            return true;
-          } else if (
-            !selected.includes("Under 500") &&
-            !selected.includes("1000 To 3000")
-          ) {
-            return true;
-          } else {
-            return false
-          }
-        })
-      : products.filter((product) => {
-          if (
-            (selected.includes("Under 500") && product.price <= 500) ||
-            (selected.includes("1000 To 3000") &&
-              product.price >= 1000 &&
-              product.price <= 3000)
-          ) {
-            return true;
-          } else if (
-            !selected.includes("Under 500") &&
-            !selected.includes("1000 To 3000")
-          ) {
-            return true;
-          } else {
-            return false;
-          }
-        });
+  let filtered = filteredByBrand.length ? filteredByBrand : products;
+
+  if (selected.includes("1") || selected.includes("2") || selected.includes("3") || selected.includes("4") || selected.includes("5")) {
+    filtered = filtered.filter((product) => {
+      return selected.includes(product.rating.toString());
+    });
+  }
+
+  if (
+    selected.includes("Under 500") ||
+    selected.includes("1000 To 3000")
+  ) {
+    filtered = filtered.filter((product) => {
+      if (
+        (selected.includes("Under 500") && product.price <= 500) ||
+        (selected.includes("1000 To 3000") &&
+          product.price >= 1000 &&
+          product.price <= 3000)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
 
   if (selected.length && filtered.length === 0) {
     setNoItemsFound(true);
@@ -106,6 +95,7 @@ useEffect(() => {
   }
   setFiltered(filtered);
 }, [selected, products]);
+
 
 
 
